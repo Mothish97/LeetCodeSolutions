@@ -1,27 +1,27 @@
 public class Solution {
     public int LongestConsecutive(int[] nums) 
     {
-        if(nums.Length ==0) return 0;
-        var sortedSet = new SortedSet<int>();
-        foreach(var n in nums)
+        if (nums.Length == 0) return 0;
+
+        var numSet = new HashSet<int>(nums);
+        var maxSum = 1;
+        
+        foreach(var n in numSet)
         {
-            sortedSet.Add(n);
-        }
-        var maxCt =1;
-        var ct = 1;
-        var sortList = sortedSet.ToList();
-        for(int i=0;i<sortList.Count-1;i++)
-        {
-            var diff = sortList[i+1] - sortList[i];
-            if(diff==1 )
+            if(!numSet.Contains(n-1))
             {
-                ct++;
+                var curNum = n;
+                var curSeq = 1;
+                while(numSet.Contains(curNum+1))
+                {
+                    curSeq++;
+                    curNum++;
+                }
+                maxSum = Math.Max(curSeq,maxSum);
+
             }
-            else{
-                ct=1;
-            }
-            maxCt = Math.Max(ct,maxCt);
         }
-        return maxCt;
+        return maxSum;
+
     }
 }
