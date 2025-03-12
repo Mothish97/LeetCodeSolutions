@@ -25,6 +25,6 @@ public class Solution {
         }
 
 
-        return room;
+        return pq.Count;
     }
 }
