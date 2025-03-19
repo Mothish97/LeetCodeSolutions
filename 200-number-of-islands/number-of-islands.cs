@@ -42,18 +42,18 @@ public class Solution {
                 }
             }
 
-
+            if(st.Count ==0) result++;
             if(st.Count ==0 && oneLocation.Count>0)
             {
                 var f = oneLocation.First();
-                result++;
+                //result++;
                 st.Enqueue(f);
                 oneLocation.Remove(f);
             }
             
  
         }
-        return result+1;
+        return result;
     }
 
     public List<(int,int)> GetNeighbors(int row, int col,char[][] grid)
