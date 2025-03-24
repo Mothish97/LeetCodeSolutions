@@ -49,10 +49,10 @@ public class Solution {
                 
             }
 
-            Console.WriteLine($"Mid {mid}");
-            Console.WriteLine($"right {right}");
-            Console.WriteLine($"left {left}");
-             Console.WriteLine($"-------");
+            // Console.WriteLine($"Mid {mid}");
+            // Console.WriteLine($"right {right}");
+            // Console.WriteLine($"left {left}");
+            //  Console.WriteLine($"-------");
         }
 
         return -1;
