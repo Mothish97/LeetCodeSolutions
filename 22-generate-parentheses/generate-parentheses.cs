@@ -5,11 +5,11 @@ public class Solution {
         if(close>open) return;
         if(curLvl == maxLvl*2 )
         {
-            if(open ==close) output.Add(curString);
+            output.Add(curString);
             return;
         }
-        dfs(curLvl+1,maxLvl,curString+"(",open+1,close,output);
-        dfs(curLvl+1,maxLvl,curString+")",open,close+1,output);
+        if(open< maxLvl) dfs(curLvl+1,maxLvl,curString+"(",open+1,close,output);
+        if(close<maxLvl) dfs(curLvl+1,maxLvl,curString+")",open,close+1,output);
     }
 
     public IList<string> GenerateParenthesis(int n) 
