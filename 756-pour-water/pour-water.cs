@@ -43,12 +43,12 @@ public class Solution {
     public int[] PourWater(int[] heights, int volume, int k)
     {
         var cur  = 0;
-        Console.WriteLine(string.Join(" ", heights));
+        //Console.WriteLine(string.Join(" ", heights));
         while(cur<volume)
         {
             fillWater( k , heights);
             cur++;
-            Console.WriteLine(string.Join(" ", heights));
+            //Console.WriteLine(string.Join(" ", heights));
         }
         return heights;
         
