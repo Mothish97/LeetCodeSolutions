@@ -21,7 +21,7 @@ public class Solution {
         if(min!= k)
         {
             heights[min]++;
-            return;;
+            return;
         }
         for(int i =k; i< heights.Length;i++)
         {
