@@ -46,11 +46,10 @@ public class Solution {
             if(st.Count ==0 && oneLocation.Count>0)
             {
                 var f = oneLocation.First();
-                //result++;
                 st.Enqueue(f);
                 oneLocation.Remove(f);
             }
-            
+        
  
         }
         return result;
