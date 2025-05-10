@@ -46,7 +46,6 @@ public class Solution {
                     }                       
                 }
             }
-            if(visited.Count >= numCourses) return true;
             if(visited.Count >= dct.Count) return true;
         } 
         if(visited.Count >= numCourses) return true;
