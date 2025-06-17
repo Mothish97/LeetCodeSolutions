@@ -43,8 +43,8 @@ public class Solution
             if(visited.Count == numCourses) return visited.ToArray();
             
         }
-        if(visited.Count > 0) return [];
-        return visited.ToArray();
+         
+        return [];
         
     }
 }
