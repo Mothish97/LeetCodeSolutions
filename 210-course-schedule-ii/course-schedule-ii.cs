@@ -31,7 +31,6 @@ public class Solution
                 if(req[1]== cur)
                 {
                     dct[req[0]]--;
-                    if(dct[req[0]] < 0) return [];
                     if(dct[req[0]] == 0 && !visited.Contains(req[0]) )
                     {
                         q.Enqueue(req[0]);
