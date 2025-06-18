@@ -10,13 +10,14 @@ public class Solution {
         {
             var cur = q.Dequeue();
             image[cur.r][cur.c] = color;
-            visited.Add(cur);
             foreach(var nei in GetN(cur.r,cur.c,image.Count(),image[0].Count()))
             {
                 //Console.WriteLine($"{nei.row},{nei.col} and {image[nei.row][nei.col] }" );
                 if(!visited.Contains(nei) && image[nei.row][nei.col] ==curColor)
                 {
                     q.Enqueue(nei);
+                    image[cur.r][cur.c] = color;
+                    visited.Add(cur);
                 }
             }
            // break;
