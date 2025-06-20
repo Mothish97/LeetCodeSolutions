@@ -1,24 +1,20 @@
 public class Solution {
     public bool SearchMatrix(int[][] matrix, int target) 
     {
-        var lst = new List<int>();
-        foreach(var a in matrix)
+        var rows = matrix.Length;
+        var cols = matrix[0].Length;
+        var col =0;
+        var row = rows-1;
+        while(col< cols && row>=0)
         {
-            lst.AddRange(a.ToList());
-        }
-        Console.WriteLine(String.Join(",",lst));
-        var left = 0;
-        var right = lst.Count-1;
-        while(left<=right)
-        {
-            var mid = left + (right - left) /2;
-            if(lst[mid]< target)
+            var cur = matrix[row][col];
+            if(cur>target)
             {
-                left= mid+1;
+                row--;
             }
-            else if(lst[mid]>target)
+            else if(cur<target)
             {
-                right = mid-1;
+                col++;
             }
             else{
                 return true;
