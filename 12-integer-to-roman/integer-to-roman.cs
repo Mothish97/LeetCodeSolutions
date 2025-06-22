@@ -15,7 +15,7 @@ public class Solution {
 
         while(num>0)
         {
-            Console.WriteLine(num);
+            //Console.WriteLine(num);
             var str = num.ToString();
             if(str[0]== '4')
             {
@@ -88,7 +88,7 @@ public class Solution {
                     res += sym[1];
                     break;
                 default:
-                    Console.WriteLine("Other");
+                   // Console.WriteLine("Other");
                     break;
             }
             
