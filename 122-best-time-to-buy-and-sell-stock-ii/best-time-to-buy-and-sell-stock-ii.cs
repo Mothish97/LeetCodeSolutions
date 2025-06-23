@@ -1,13 +1,15 @@
 public class Solution {
-    public int MaxProfit(int[] prices) {
-            int maxProfit = 0;
-
-    for (int i = 0; i < prices.Length-1; i++) {
-        if (prices[i+1] > prices[i]) {
-            maxProfit += prices[i+1] - prices[i];
+    public int MaxProfit(int[] prices) 
+    {
+        var dp = new int[prices.Count()];
+        var maxsofar = 0;
+        for(int i =1 ;i< prices.Count();i++)
+        {
+        
+            dp[i] = Math.Max(prices[i] - prices[i-1] + maxsofar, maxsofar);
+            maxsofar = Math.Max(maxsofar,dp[i]);
+            
         }
-    }
-
-    return maxProfit;
+        return dp[dp.Count()-1];
     }
 }
