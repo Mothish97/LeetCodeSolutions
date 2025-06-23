@@ -14,7 +14,7 @@ public class Solution {
             }
 
         }
-        Console.WriteLine(String.Join(",",dp));
+        //Console.WriteLine(String.Join(",",dp));
         if(dp[amount] == amount +1) return -1;
         return dp[amount];
         
