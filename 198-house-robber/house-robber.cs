@@ -3,23 +3,10 @@ public class Solution {
     {
         var dp = new int[nums.Count()+1];
 
-        for(int i=1; i<= nums.Count();i++)
+        dp[1]= nums[0];
+        for(int i=2; i<= nums.Count();i++)
         {
-            if(i<3)
-            {
-                dp[i] = nums[i-1];
-            }
-            else
-            {
-                var max = 0;
-                for(int j=0 ; j<i-1;j++)
-                {
-                    max = Math.Max(dp[j],max);
-                }
-                dp[i] = nums[i-1] + max;
-
-            }
-
+            dp[i] = Math.Max(dp[i-1], dp[i-2]+ nums[i-1]);
         }
         Console.WriteLine(String.Join(",",dp));
 
