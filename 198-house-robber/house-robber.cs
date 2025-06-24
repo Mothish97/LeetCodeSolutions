@@ -8,7 +8,7 @@ public class Solution {
         {
             dp[i] = Math.Max(dp[i-1], dp[i-2]+ nums[i-1]);
         }
-        Console.WriteLine(String.Join(",",dp));
+        //Console.WriteLine(String.Join(",",dp));
 
         return dp.Max();
         
