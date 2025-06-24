@@ -1,46 +1,42 @@
-public class Solution {
-
-    public static int dfs(int[,] mat, int r, int c, int[,] map)
+public class Solution 
+{
+    public int dfs(int[,] mat, int[,] memo,int r, int c)
     {
-        int rows = map.GetLength(0);
-        int cols = map.GetLength(1);
+        int rows = mat.GetLength(0);
+        int cols = mat.GetLength(1);
 
         if (r >= rows || c >= cols)
             return 0;
-        if(map[r,c]!= -1)
+
+        if(memo[r,c] != -1)
         {
-            return map[r,c];
+            return memo[r,c];
         }
         if(mat[r,c] == 0)
         {
             return 0;
         }
-        var down = dfs(mat,r+1,c,map);
-        var right = dfs(mat,r,c+1,map);
-        var diag = dfs(mat,r+1,c+1,map);
-        
-        map[r,c] = Math.Min(down,Math.Min(right,diag))+1;
-        return map[r,c];
 
+        var down =dfs(mat,memo,r+1,c);
+        var right = dfs(mat,memo,r,c+1);
+        var diag = dfs(mat,memo,r+1,c+1);
+        memo[r,c] =  1 + Math.Min(diag,Math.Min(right,down));
+        return memo[r,c] ;
     }
-    public int MaximalSquare(char[][] matrix) {
-        
-        if(matrix.Length == 0 || matrix[0].Length == 0) return 0;
-    
-        int rows = matrix.Length;
-        int cols = matrix[0].Length;
-        int maxSize = 0;
-        int[,] memo = new int[rows, cols];
-        int[,] mat = new int[rows, cols];
-
-        for(int i = 0; i < rows; i++)
+    public int MaximalSquare(char[][] matrix) 
+    {
+        var mat = new int[matrix.Count(),matrix[0].Count()];
+        var memo = new int[matrix.Count(),matrix[0].Count()];
+        for(int i =0; i< matrix.Count();i++)
         {
-            for(int j = 0; j < cols; j++)
+            for(int j=0;j<matrix[0].Count();j++)
             {
-                memo[i,j] = -1;
                 mat[i,j] = matrix[i][j] - '0';
+                memo[i,j] = -1;
             }
         }
+                int rows = matrix.Length;
+        int cols = matrix[0].Length;
 
         for (int i = 0; i < rows; i++)
         {
@@ -48,11 +44,11 @@ public class Solution {
             {
                 if (mat[i, j] == 1)
                 {
-                    dfs(mat, i, j, memo);
+                    dfs(mat,memo, i, j);
                 }
             }
         }
-
+        var maxSize = 0;
         for(int i = 0; i < rows; i++)
         {
             for(int j = 0; j < cols; j++)
@@ -63,7 +59,6 @@ public class Solution {
                 }
             }
         }
-        // Return the size of the largest square found.
-        return maxSize*maxSize;
+        return maxSize* maxSize;
     }
 }
