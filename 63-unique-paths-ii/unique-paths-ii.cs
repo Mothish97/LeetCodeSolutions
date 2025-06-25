@@ -5,7 +5,6 @@ public class Solution
         var m = obs.Count();
         var n = obs[0].Count(); 
         if(obs[0][0] == 1 ) return 0;
-        if( m == 1 && n == 1 && obs[m-1][n-1] == 1) return 0;
         var matrix = new int[m,n];
         matrix[0,0] =1;
         for (int i = 0; i < m; i++)
