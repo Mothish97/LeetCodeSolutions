@@ -6,10 +6,10 @@ public class Solution {
     {
         var res = new int[]  {-1,-1,-1};
         var ridx =  new int[] {0,0,0};
-        var pq = new PriorityQueue<(int val,int idx),int>();
+        var pq = new PriorityQueue<(int val,int idx),int>(Comparer<int>.Create((x, y) => y - x));
         for(int i=0;i<y.Count(); i++)
         {
-            pq.Enqueue((y[i],i),-y[i]);
+            pq.Enqueue((y[i],i),y[i]);
         }
         while(pq.Count>0)
         {
