@@ -1,26 +1,22 @@
 public class Solution {
     public double FindMedianSortedArrays(int[] nums1, int[] nums2) 
     {
-        var lst = new List<int>();
-        var pq = new PriorityQueue<int,int>();
-        foreach(var na in nums1)
-        {
-            pq.Enqueue(na,na);
-        }
-        foreach(var na in nums2)
-        {
-            pq.Enqueue(na,na);
-        }
-        while(pq.Count>0)
-        {
-            lst.Add(pq.Dequeue());
-        }
-        
-        int n = lst.Count();
+        int m = nums1.Length, n = nums2.Length;
+        int[] merged = new int[m + n];
+        int i = 0, j = 0, k = 0;
 
-        if (n % 2 == 1)
-            return lst[n / 2];
+        while (i < m && j < n)
+        {
+            if (nums1[i] < nums2[j]) merged[k++] = nums1[i++];
+            else merged[k++] = nums2[j++];
+        }
+        while (i < m) merged[k++] = nums1[i++];
+        while (j < n) merged[k++] = nums2[j++];
+
+        int total = m + n;
+        if (total % 2 == 1)
+            return merged[total / 2];
         else
-            return (lst[n / 2 - 1] + lst[n / 2]) / 2.0;
+            return (merged[total / 2 - 1] + merged[total / 2]) / 2.0;
     }
 }
