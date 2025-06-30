@@ -1,29 +1,24 @@
 public class Solution {
     public int SubarraySum(int[] nums, int k) 
     {
-        int cur =0;
-        var left =0;
-        var count =0;
-        while(left<nums.Length)
+        var dct = new Dictionary<int,int>();
+        dct[0] = 1;
+        var sum =0;
+        var count = 0; 
+        foreach(var n in nums)
         {
-            for(int i=left; i<nums.Length;i++)
+            sum = sum+n;
+            var diff = sum-k;
+            if(dct.ContainsKey(diff))
             {
-                
-                cur = cur + nums[i];
-               // Console.WriteLine($"bef loop cur  {cur}");
-                //Console.WriteLine($"bef loop k {k}");
-                if(cur == k) 
-                {
-                    //Console.WriteLine($"cur {cur}");
-                    //Console.WriteLine($"k {k}");
-                    count++;
-                }
-                //if(cur> k) break;
+                count = count + dct[diff];
             }
-            Console.WriteLine($"Out For loop");
-
-            left++;
-            cur =0;
+            if(!dct.ContainsKey(sum))
+            {
+                dct.Add(sum,0);
+            }
+            dct[sum]++;
+    
         }
         return count;
         
