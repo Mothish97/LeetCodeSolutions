@@ -38,7 +38,6 @@ public class Solution {
                 sum+= s.GetInteger();
             }
             else{
-                //Console.WriteLine("0");
                 sum+= CalculateSum(s,2);
             }
         }
