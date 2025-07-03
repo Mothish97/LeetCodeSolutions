@@ -52,15 +52,11 @@ public class Solution {
         {
             if(data.IsInteger())
             {
-                //Console.WriteLine();
                 sum += data.GetInteger()* depth;
-                //Console.WriteLine(sum);
-            
             }
             else
             {
                 sum+=CalculateSum(data,depth+1);
-                
             }
         }
 
