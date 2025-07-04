@@ -16,31 +16,18 @@ public class Solution {
         {
             Console.WriteLine(days[didx]);
             var min = int.MaxValue;
-            if(n-1>=0)
+            for(int i=0; i<3;i++)
             {
-                min = Math.Min(dp[n-1] +costs[0], min  );       
+                 
+                if(n-pass[i]>=0)
+                {
+                    min = Math.Min(dp[n-pass[i]] +costs[i], min  );       
+                }
+                else
+                {
+                    min = Math.Min(costs[i], min); 
+                }
             }
-            else
-            {
-                min = Math.Min(costs[0], min  ); 
-            }
-            if(n-7>=0)
-            {
-                min = Math.Min(dp[n-7] +costs[1], min  );       
-            }
-            else
-            {
-                min = Math.Min(costs[1], min  ); 
-            }
-            if(n-30>=0)
-            {
-                min = Math.Min(dp[n-30] +costs[2], min  );       
-            }
-            else
-            {
-                min = Math.Min(costs[2], min  ); 
-            }
-
             didx++;
             dp[n] = min;
             //Console.WriteLine($"day{n} with {min}");
@@ -53,7 +40,7 @@ public class Solution {
 
        
     }
-   // Console.WriteLine(string.Join(",",dp));      
+    Console.WriteLine(string.Join(",",dp));      
 
 
      return dp[dp.Count()-1];
