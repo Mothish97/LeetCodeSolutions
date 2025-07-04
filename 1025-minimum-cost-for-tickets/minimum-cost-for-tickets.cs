@@ -18,7 +18,6 @@ public class Solution {
             var min = int.MaxValue;
             for(int i=0; i<3;i++)
             {
-                 
                 if(n-pass[i]>=0)
                 {
                     min = Math.Min(dp[n-pass[i]] +costs[i], min  );       
@@ -40,7 +39,7 @@ public class Solution {
 
        
     }
-    Console.WriteLine(string.Join(",",dp));      
+   // Console.WriteLine(string.Join(",",dp));      
 
 
      return dp[dp.Count()-1];
