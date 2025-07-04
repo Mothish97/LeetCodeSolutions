@@ -7,29 +7,38 @@ public class Solution {
 
     var dp = new int[days[days.Count()-1]+1];
     var pass = new int[3]{1,7,30};
+    var didx = 0;
 
     for(int n =1; n<dp.Count(); n++)
     {
-        if(!days.Contains(n))
+        
+        if(days[didx]== n)
         {
-            dp[n] = dp[n-1];
-            continue;
-        }
-
-
-        var min = int.MaxValue;
-        for(int i=0; i<3;i++)
-        {
-            if(n-pass[i]>=0)
+            Console.WriteLine(days[didx]);
+            var min = int.MaxValue;
+            for(int i=0; i<3;i++)
             {
-                min = Math.Min(dp[n-pass[i]] +costs[i], min  );       
+                 
+                if(n-pass[i]>=0)
+                {
+                    min = Math.Min(dp[n-pass[i]] +costs[i], min  );       
+                }
+                else
+                {
+                    min = Math.Min(costs[i], min  ); 
+                }
             }
-            else{
-                min = Math.Min(costs[i], min  );  
-            }
+            didx++;
+            dp[n] = min;
+            //Console.WriteLine($"day{n} with {min}");
         }
-        //Console.WriteLine($"day{n} with {min}");
-        dp[n] = min;
+        else
+        {   
+            dp[n] = dp[n-1];
+        }
+
+
+       
     }
     Console.WriteLine(string.Join(",",dp));      
 
