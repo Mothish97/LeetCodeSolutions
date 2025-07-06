@@ -28,7 +28,13 @@ public class Solution {
             for(int i=0;i<qc;i++)
             {
                 var cur = q.Dequeue();
-                rooms[cur.r][cur.c] = Math.Min(rooms[cur.r][cur.c] ,lvl);
+                if(rooms[cur.r][cur.c]< lvl)
+                {
+                    continue;
+                }
+                else{
+                    rooms[cur.r][cur.c] = lvl;
+                }
                 foreach(var n in GetNeighors(cur.r,cur.c,rooms.Count(),rooms[0].Count()))
                 {
                     if(!visited.Contains(n) && rooms[n.r][n.c]> lvl+1)
