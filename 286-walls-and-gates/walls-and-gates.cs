@@ -37,7 +37,7 @@ public class Solution {
                 }
                 foreach(var n in GetNeighors(cur.r,cur.c,rooms.Count(),rooms[0].Count()))
                 {
-                    if(!visited.Contains(n) && rooms[n.r][n.c]> lvl+1)
+                    if(!visited.Contains(n))
                     {
                         visited.Add(n);
                         if(rooms[n.r][n.c]!= -1)
