@@ -31,11 +31,11 @@ public class Solution {
                 res += dp[i,j] ;
             }
         } 
-        for (int r = 0; r < matrix.Count(); r++)
-        {
-            Console.WriteLine(string.Join(" ", Enumerable.Range(0, matrix[0].Count())
-                                                        .Select(c => dp[r, c])));
-        }
+        // for (int r = 0; r < matrix.Count(); r++)
+        // {
+        //     Console.WriteLine(string.Join(" ", Enumerable.Range(0, matrix[0].Count())
+        //                                                 .Select(c => dp[r, c])));
+        // }
 
         return res;
 
