@@ -1,25 +1,33 @@
 public class Solution {
-    public int MaxBoxesInWarehouse(int[] box, int[] war) 
+    public int MaxBoxesInWarehouse(int[] boxes, int[] war) 
     {
-        Array.Sort(box);
-        var pre = new int[war.Count()];
-        var minSoFar = int.MaxValue;
-        for(int i =0; i<war.Count();i++)
+        Array.Sort(boxes);
+        Array.Reverse(boxes);
+        var box = boxes.ToList();
+        var mins = new int[war.Count()];
+        mins[0] = war[0];
+        for(int i =1; i<war.Count();i++)
         {
-            minSoFar = Math.Min(minSoFar,war[i]);
-            pre[i] = minSoFar;
+            mins[i] = Math.Min(war[i], mins[i-1]);
         }
+        var count =0;
+        Console.WriteLine(string.Join(",",mins));
+        Console.WriteLine(string.Join(",",box));
 
-        int b =0;
-        for(int i = war.Count()-1; i>=0 && b < box.Count();i--)
+        for(int i =0 ; i < mins.Count() ; i++)
         {
-            if(pre[i]>= box[b])
-            {
-                b++;
+            while(box.Count>0)
+            {     
+                var last = box[0];
+                box.RemoveAt(0);
+                if(mins[i] >= last)
+                {
+                    count++;
+                    break;
+                }     
             }
         }
-        return b;
-            
+        return count;
         
     }
 }
