@@ -1,62 +1,51 @@
-public class Solution
-{
-    public bool CanBeValid(string s, string locked)
+public class Solution {
+    public bool CanBeValid(string s, string locked) 
     {
-        int length = s.Length;
+        int n = s.Length;
+        if(s.Count()%2 ==1) return false;
+        var lockst = new Stack<int>();
+        var unlock = new Stack<int>();
 
-        // If length of string is odd, return false.
-        if (length % 2 == 1)
+        for(int i =0; i< n;i++)
         {
-            return false;
-        }
-
-        Stack<int> openBrackets = new Stack<int>();
-        Stack<int> unlocked = new Stack<int>();
-
-        // Iterate through the string to handle '(' and ')'
-        for (int i = 0; i < length; i++)
-        {
-            if (locked[i] == '0')
+            if(locked[i] == '0')
             {
-                unlocked.Push(i);
+                unlock.Push(i);
             }
-            else if (s[i] == '(')
+
+            else if(s[i] == '(')
             {
-                openBrackets.Push(i);
+                lockst.Push(i);
             }
-            else if (s[i] == ')')
+            else  if(s[i] == ')')
             {
-                if (openBrackets.Count > 0)
+                if(lockst.Count>0)
                 {
-                    openBrackets.Pop();
+                    lockst.Pop();
                 }
-                else if (unlocked.Count > 0)
+                else if(unlock.Count>0)
                 {
-                    unlocked.Pop();
+                    unlock.Pop();
                 }
-                else
-                {
+                else{
                     return false;
                 }
             }
+            
+ 
+        }
+        
+        while(lockst.Count > 0 &&
+            unlock.Count > 0 && unlock.Peek()> lockst.Peek())
+        {
+                lockst.Pop();
+                unlock.Pop();
         }
 
-        // Match remaining open brackets with unlocked characters
-        while (
-            openBrackets.Count > 0 &&
-            unlocked.Count > 0 &&
-            openBrackets.Peek() < unlocked.Peek()
-        )
-        {
-            openBrackets.Pop();
-            unlocked.Pop();
-        }
 
-        if (openBrackets.Count > 0)
-        {
-            return false;
-        }
+        if(lockst.Count>0) return false;
 
         return true;
+
     }
 }
