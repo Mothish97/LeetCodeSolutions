@@ -11,8 +11,8 @@ public class Solution {
             mins[i] = Math.Min(war[i], mins[i-1]);
         }
         var count =0;
-        Console.WriteLine(string.Join(",",mins));
-        Console.WriteLine(string.Join(",",box));
+        // Console.WriteLine(string.Join(",",mins));
+        // Console.WriteLine(string.Join(",",box));
 
         for(int i =0 ; i < mins.Count() ; i++)
         {
