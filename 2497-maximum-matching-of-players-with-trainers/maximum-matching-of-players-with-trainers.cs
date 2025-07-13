@@ -1,13 +1,11 @@
 public class Solution {
-    public int MatchPlayersAndTrainers(int[] players, int[] trainers) 
+    public int MatchPlayersAndTrainers(int[] pl, int[] tr) 
     {
         var res =0;
-        Array.Sort(players);
-        Array.Sort(trainers);
-        var pl = players.ToList();
-        var tr = trainers.ToList();
-        var ipl = 0;
-        var itr = 0;
+        Array.Sort(pl);
+        Array.Sort(tr);
+        var itr =0;
+        var ipl =0;
         while(ipl < pl.Count() && itr<tr.Count())
         {
             if(pl[ipl]<= tr[itr])
