@@ -15,8 +15,8 @@ public class Solution {
                 {
                     cur++;
                 }
-                Console.WriteLine($"Add {cur}");
-                Console.WriteLine($"--------------------");
+                //Console.WriteLine($"Add {cur}");
+                //Console.WriteLine($"--------------------");
                 stck.Push((cur,s));
                 dct.Add(cur);
                 s++;
@@ -56,15 +56,15 @@ public class Solution {
                     stck.Clear();
                     stck.Push((ct+1,0));
                     dct.Clear();
-                    Console.WriteLine($"Remove all");
+                    //Console.WriteLine($"Remove all");
                     s = 0;
                     dct.Add(stck.Peek().val);
-                    Console.WriteLine($"Add {stck.Peek().val}");
+                    //Console.WriteLine($"Add {stck.Peek().val}");
                 } 
                 else
                 {
                     stck.Push((cur,s));
-                    Console.WriteLine($"Add {cur}");
+                    //Console.WriteLine($"Add {cur}");
                     dct.Add(stck.Peek().val);
                     s++;
                 }
@@ -78,7 +78,7 @@ public class Solution {
             res.Add((char)('0' + stck.Pop().val));
         }
         res.Reverse();
-        Console.WriteLine(string.Join(",",res));
+        //Console.WriteLine(string.Join(",",res));
         return new string(res.ToArray());
 
 
