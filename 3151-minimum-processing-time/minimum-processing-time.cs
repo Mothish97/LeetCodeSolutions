@@ -21,7 +21,7 @@ public class Solution {
             }
 
         }
-        Console.WriteLine(string.Join(",",tsk));
+        //Console.WriteLine(string.Join(",",tsk));
         return res;
     }
 }
