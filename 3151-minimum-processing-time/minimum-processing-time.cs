@@ -12,7 +12,7 @@ public class Solution {
         for(int i =0; i< tsk.Count && ind<prt.Count();i++)
         {
             swap++;
-            Console.WriteLine($"{prt[ind]} + {tsk[i]} =  {prt[ind] + tsk[i]}");
+            //Console.WriteLine($"{prt[ind]} + {tsk[i]} =  {prt[ind] + tsk[i]}");
             res = Math.Max(res,prt[ind] + tsk[i]);
             if(swap == 4 )
             {
