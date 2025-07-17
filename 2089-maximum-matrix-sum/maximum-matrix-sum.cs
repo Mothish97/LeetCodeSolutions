@@ -14,8 +14,9 @@ public class Solution {
                     neg++;
                     
                 }
-                min = Math.Min(min,Math.Abs(mat[i][j]));
-                res += (long) Math.Abs(mat[i][j]);
+                var cur = Math.Abs(mat[i][j]);
+                min = Math.Min(min,cur);
+                res += (long) cur;
             }
             
         }
