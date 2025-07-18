@@ -9,18 +9,18 @@ public class Solution {
             if(s[i] == '(')
             {
                 lck.Push(('(',i));
-                Console.WriteLine($"Pushed to lck ( at idx{i}");
+                //Console.WriteLine($"Pushed to lck ( at idx{i}");
             }
             else if (s[i] == ')')
             {
                 if(lck.Count>0)
                 {
-                    Console.WriteLine($"Popped lck");
+                    //Console.WriteLine($"Popped lck");
                     lck.Pop();
                 }
                 else if(unlock.Count()>0)
                 {
-                    Console.WriteLine($"Popped unlock");
+                    //Console.WriteLine($"Popped unlock");
                     unlock.Pop();
                 }
                 else{
@@ -28,13 +28,13 @@ public class Solution {
                 }
             }
             else{
-                Console.WriteLine($"Pushed to unlock * at idx{i}");
+                //Console.WriteLine($"Pushed to unlock * at idx{i}");
                 unlock.Push(('*',i));
             }
 
-            Console.WriteLine($"lck Count {lck.Count()}");
-             Console.WriteLine($"unlock Count {unlock.Count()}");
-              Console.WriteLine($"---------------------------------------");
+            //Console.WriteLine($"lck Count {lck.Count()}");
+             //Console.WriteLine($"unlock Count {unlock.Count()}");
+              //Console.WriteLine($"---------------------------------------");
         }
         while(lck.Count()>0 && unlock.Count()>0)
         {
@@ -44,13 +44,13 @@ public class Solution {
                 unlock.Pop();
             }
             else{
-                Console.WriteLine("1");
+                //Console.WriteLine("1");
                 return false;
             }
         }
-        Console.WriteLine("2");
+       // Console.WriteLine("2");
         if(lck.Count()>0) return false;
-        Console.WriteLine("3");
+        //Console.WriteLine("3");
         return true;
         
     }
