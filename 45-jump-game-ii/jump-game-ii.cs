@@ -1,36 +1,41 @@
 public class Solution {
     public int Jump(int[] nums) 
     {
-        if(nums.Length ==1 ) 
+        //2 3 1 1 4
+        if(nums.Count() <=1) return 0;
+        if(nums[0] >= nums.Count()-1) return 1;
+
+        var ind =0;
+        var res =1;
+        while( ind < nums.Count())
         {
-            return 0;    
-        }
-        var res =0;
-        var curPos =0;
-        while(curPos<nums.Length-1)
-        {   
-            var maxStep = 0;
-            var maxInd = 0;
-            if(curPos + nums[curPos]>=nums.Length-1) 
-            {
-                Console.WriteLine("Enter Here");
-                return res+1;
-            }
-            for(int j = curPos+1; j<= curPos+nums[curPos];j++)
-            {
-                if(j>nums.Length -1) break;
-                if(j + nums[j] > maxStep)
+            var maxStep  = 0;              
+            var add = 0;
+            for(int i=1 ;i<=nums[ind];i++)
+            {  
+                if(ind+i >= nums.Count()) return res;
+                if(maxStep <=nums[ind+i] + i+ ind)
                 {
-                    maxStep = j + nums[j];
-                    maxInd = j;
+                    maxStep =nums[ind+i] + i+ ind;
+                    add=i;
                 }
-            }
-            Console.WriteLine($"Max Step : {maxStep}");
-            Console.WriteLine($"maxInd : {maxInd}");
-            Console.WriteLine($"curPos : {curPos}");
-            curPos = maxInd;
-            res++;           
+            } 
+            Console.WriteLine($"add: {add}, ind :{ind}");
+            ind += add;
+            if(ind >= nums.Count()-1 ) return res;
+            if(ind + nums[ind] >= nums.Count()-1) return res+1;
+            res++;
+            
+            
         }
         return res;
     }
 }
+
+// 
+
+                // if(i+ ind + nums[ind+i]>= nums.Count()-1 )
+                // {
+                //     Console.WriteLine($"Return here {ind} + {nums[ind]} + {i}");
+                //     return res+1;
+                // }
