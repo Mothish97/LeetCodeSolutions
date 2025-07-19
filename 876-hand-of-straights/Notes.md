@@ -1,1 +1,1 @@
-<h2>hand-of-straights Notes</h2><hr>[ Time taken: 17 m 55 s ]
+<h2>hand-of-straights Notes</h2><hr>[ Time taken: 26 m 19 s ]
