@@ -1,24 +1,27 @@
 public class Solution {
     public int CanCompleteCircuit(int[] gas, int[] cost) 
     {
-        var total = 0;
-        var cur = 0;
-        var start = 0;
-        for(int i = 0;i< gas.Length;i++)
+        if(cost.Sum()> gas.Sum()) return -1;
+        var prGas =0;
+        var prCo =0;
+        var spent = new List<int>();
+        var res = 0;
+        for(int i = 0; i< gas.Count();i++)
         {
-            total += gas[i] - cost[i];
-            cur += gas[i] - cost[i];
-            if(cur< 0)
+            
+            prGas = gas[i] - cost[i];
+            spent.Add(prGas);
+            prCo += prGas;
+            
+            if(prCo<0)
             {
-                start = i+1;
-                cur=0;
+                prCo = 0;
+                res = i+1;
             }
-
         }
 
-        if(total < 0) return -1;
-        return start;
 
+        return res;
         
     }
 }
