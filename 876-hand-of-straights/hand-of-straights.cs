@@ -3,7 +3,8 @@ public class Solution {
     {
         
         if(hand.Count() % groupSize != 0) return false;
-        var dct = new SortedDictionary<int,int>();
+        Array.Sort(hand);
+        var dct = new Dictionary<int,int>();
         foreach(var d in hand)
         {
             if(dct.ContainsKey(d))
