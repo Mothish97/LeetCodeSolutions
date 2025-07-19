@@ -14,7 +14,6 @@ public class Solution {
                 dct.Add(d,1);
             }
         }
-        dct.OrderBy(kvp => kvp.Value);
 
         while(dct.Count()>0)
         {         
