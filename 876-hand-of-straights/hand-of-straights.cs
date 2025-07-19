@@ -16,23 +16,19 @@ public class Solution {
             }
         }
 
-        while(dct.Count()>0)
-        {         
-            var first = dct.First().Key;
-            for(int j=0; j<groupSize;j++)
-            {
-                if(dct.ContainsKey(first))
-                {
-                    dct[first]--;
-                }
-                else{
-                    return false;
-                }
-                
-                if(dct[first] == 0) dct.Remove(first);
-                first++;
-            }
+        foreach (int start in hand)           
+        {
+            if (dct[start] == 0) continue;     
 
+            // try to build one group [start, start+1, …, start+groupSize‑1]
+            for (int offset = 0; offset < groupSize; offset++)
+            {
+                int card = start + offset;
+                if (!dct.TryGetValue(card, out int cnt) || cnt == 0)
+                    return false;                   // missing card
+
+                dct[card] = cnt - 1;               // consume one
+            }
         }
         return true;
 
