@@ -3,29 +3,35 @@ public class Solution {
     {
         
         if(hand.Count() % groupSize != 0) return false;
-        Array.Sort(hand);
-        var hnd = hand.ToList();
-        var i =0;
-        while(hnd.Count()>0)
+        var dct = new SortedDictionary<int,int>();
+        foreach(var d in hand)
         {
-            
-            
-            var first = hnd[0];
-            hnd.RemoveAt(0);
-            for(int j=1; j<groupSize;j++)
+            if(dct.ContainsKey(d))
             {
-                first++;
-                if(hnd.Contains(first))
+                dct[d] ++;
+            }
+            else{
+                dct.Add(d,1);
+            }
+        }
+        dct.OrderBy(kvp => kvp.Value);
+
+        while(dct.Count()>0)
+        {         
+            var first = dct.First().Key;
+            for(int j=0; j<groupSize;j++)
+            {
+                if(dct.ContainsKey(first))
                 {
-                    hnd.Remove(first);
+                    dct[first]--;
                 }
                 else{
                     return false;
                 }
+                
+                if(dct[first] == 0) dct.Remove(first);
+                first++;
             }
-            //Console.WriteLine(string.Join(",",hnd));
-
-            i++;
 
         }
         return true;
