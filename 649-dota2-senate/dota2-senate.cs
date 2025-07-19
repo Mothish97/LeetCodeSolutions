@@ -16,48 +16,23 @@ public class Solution {
                 rq.Enqueue(i);
             }
         }
-        if(rq.Count() == 0) return "Dire";
-        if(dq.Count()==0) return "Radiant";
-
-        var ind =0;
-        while(ind < indices.Count() )
+        int n = senate.Length;
+        while(dq.Count() >0 && rq.Count()>0)
         {
-            var l  = indices[ind];
-            //Console.WriteLine(string.Join(",",indices));
-            //Console.WriteLine(indices[ind]);
-            if(senate[indices[ind]] == 'D' )
+            var d = dq.Dequeue();
+            var r = rq.Dequeue();
+            if(d<r)
             {
-                var last = dq.Dequeue();
-                dq.Enqueue(last);
-                var toBlock = rq.Dequeue();
-                // Console.WriteLine("---");
-                indices.Remove(toBlock);
-                if(toBlock < l) ind--;
-                // Console.WriteLine("---");
-                if(rq.Count == 0) return "Dire";
+                dq.Enqueue(d+n );
             }
-            else if(senate[indices[ind]] == 'R' )
-            {
-                var last = rq.Dequeue();
-                rq.Enqueue(last);
-                var toBlock = dq.Dequeue();
-                if(toBlock < l) ind--;
-                indices.Remove(toBlock);
-                if(dq.Count == 0) return "Radiant";
-            }
-            // Console.WriteLine("---");
-            ind++;
-            if(ind >= indices.Count())
-            {
-                // Console.WriteLine("---");
-                ind =0;
-                // Console.WriteLine($"dq.Count() {dq.Count()}   rq.Count(){ rq.Count()}");
-                // if(dq.Count()> rq.Count()) return "Dire";
-                // if(dq.Count()< rq.Count()) return "Radiant";
-                // if(dq.Count() == rq.Count() ) ind =0;
+            else{
+                rq.Enqueue(r+n );
             }
         }
 
+
+        if(rq.Count() == 0) return "Dire";
+        if(dq.Count()==0) return "Radiant";
         return "";
         
     }
