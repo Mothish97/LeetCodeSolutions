@@ -32,7 +32,7 @@ public class Solution {
                 
                 ct20++;
             }
-            Console.WriteLine($"ct5 {ct5} ct10 {ct10} ct20 {ct20}");
+            // Console.WriteLine($"ct5 {ct5} ct10 {ct10} ct20 {ct20}");
             if(ct5 <0 || ct10<0 || ct20<0) return false;
         }
         return true;
