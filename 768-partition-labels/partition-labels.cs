@@ -31,7 +31,7 @@ public class Solution {
             res[i] = res[i] - res[i-1];
         }
         res[0]++;
-        Console.WriteLine(string.Join(",", res));
+        //Console.WriteLine(string.Join(",", res));
 
         return res;
 
