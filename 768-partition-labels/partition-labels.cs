@@ -7,13 +7,13 @@ public class Solution {
         
         for(int i =0 ; i< s.Count();i++)
         {
-            if(dct.ContainsKey(s[i]))
+            if (dct.TryGetValue(s[i], out _))
             {
-                dct[s[i]]=i;
+                dct[s[i]] = i;      // key exists – overwrite the value
             }
             else
             {
-                dct.Add(s[i],i);
+                dct.Add(s[i], i);   // key missing – add it
             }
         }
 
@@ -21,10 +21,8 @@ public class Solution {
         for(int i =0 ; i< s.Count();i++)
         {
             curLast = Math.Max(curLast,dct[s[i]]);
-            //Console.WriteLine($"Char {s[i]} lastind {dct[s[i]] } curind {i} curLast{curLast}");
             if(dct[s[i]] == i && i >= curLast)
             {
-               // Console.WriteLine($"Added Char {s[i]} lastind {dct[s[i]] } curind {i} curLast{curLast}");
                 res.Add(i);
             }
         }
