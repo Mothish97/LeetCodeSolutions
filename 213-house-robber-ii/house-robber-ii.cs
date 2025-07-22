@@ -15,8 +15,8 @@ public class Solution {
             dp2[i] = Math.Max(dp2[i-1], nums[i]+dp2[i-2]);
         }
 
-        Console.WriteLine(string.Join(",",dp));
-        Console.WriteLine(string.Join(",",dp2));
+       // Console.WriteLine(string.Join(",",dp));
+        //Console.WriteLine(string.Join(",",dp2));
         return Math.Max(dp.Max(), dp2.Max());
 
     }
