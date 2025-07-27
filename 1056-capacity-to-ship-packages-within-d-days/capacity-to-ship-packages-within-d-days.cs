@@ -7,11 +7,11 @@ public class Solution {
         while(left<=right)
         {
             var mid = left + (right - left) / 2; 
-            Console.WriteLine(mid);
+            //Console.WriteLine(mid);
             if(possible(mid,weights,days))
             {
                 right = mid-1;
-                res = Math.Min(res,mid);
+                //res = Math.Min(res,mid);
             }
             else{
                 left = mid+1;
