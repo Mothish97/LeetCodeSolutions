@@ -1,38 +1,17 @@
 public class Solution {
     public bool CanConstruct(string s, int k) 
     {
-        if(k == s.Count()) return true;
-        if(k > s.Count()) return false;
-        
-        var kused =k;
-        var dct = new Dictionary<char,int>();
-        foreach(var c in s)
-        {
-            if(!dct.ContainsKey(c))
-            {
-                dct.Add(c,0);
-            }
-            dct[c]++;
-        }
-        if(dct.Count()==1) return true;
+        if (k > s.Length) return false;
+        if (k == s.Length) return true;
 
-        foreach(var d in dct)
-        {
-            if(d.Value %2 !=0)
-            {
-                kused--;
-                if(kused ==-1) return false;
-            }
-        }
+        var freq = new int[26];
+        foreach (var c in s)
+            freq[c - 'a']++;
 
-        
-        return true;
-        
+        int oddCount = 0;
+        foreach (var f in freq)
+            if ((f & 1) != 0) oddCount++;
+
+        return oddCount <= k;
     }
 }
-
-// a 2
-// n 2
-// b 1
-// e 2
-// l 2
