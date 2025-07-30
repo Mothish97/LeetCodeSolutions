@@ -27,9 +27,7 @@ public class Solution {
                 if(kused ==-1) return false;
             }
         }
-        Console.WriteLine(string.Join(",",evens));
-        Console.WriteLine(string.Join(",",odds));
-        Console.WriteLine($"kused {kused}");
+
         
         return true;
         
