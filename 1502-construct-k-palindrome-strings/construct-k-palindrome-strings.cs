@@ -3,6 +3,7 @@ public class Solution {
     {
         if(k == s.Count()) return true;
         if(k > s.Count()) return false;
+        
         var kused =k;
         var dct = new Dictionary<char,int>();
         foreach(var c in s)
