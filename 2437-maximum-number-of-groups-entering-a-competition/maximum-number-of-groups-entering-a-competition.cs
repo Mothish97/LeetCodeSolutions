@@ -1,7 +1,7 @@
 public class Solution {
     public int MaximumGroups(int[] grades) {
         Array.Sort(grades);
-        Console.WriteLine(string.Join(",",grades));
+        //Console.WriteLine(string.Join(",",grades));
         var lstsum = 0;
         var lastgrp = 0;
         var curgrp = 0;
@@ -18,7 +18,7 @@ public class Solution {
                 if(curgrp > lastgrp && cursum > lstsum) break;
                 if(i >= grades.Count()) return res;
             }
-            Console.WriteLine($"cursum {cursum}  curgrp {curgrp}");
+            //Console.WriteLine($"cursum {cursum}  curgrp {curgrp}");
             lstsum = cursum;
             lastgrp++;
             cursum = 0;
