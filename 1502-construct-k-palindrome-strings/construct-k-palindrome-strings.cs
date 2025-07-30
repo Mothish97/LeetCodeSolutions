@@ -1,0 +1,43 @@
+public class Solution {
+    public bool CanConstruct(string s, int k) 
+    {
+        if(k == s.Count()) return true;
+        if(k > s.Count()) return false;
+        var kused =k;
+        var dct = new Dictionary<char,int>();
+        foreach(var c in s)
+        {
+            if(!dct.ContainsKey(c))
+            {
+                dct.Add(c,0);
+            }
+            dct[c]++;
+        }
+        if(dct.Count()==1) return true;
+        var evens = new List<char>();
+        var odds = new List<char>();
+        foreach(var d in dct)
+        {
+            if(d.Value %2 ==0)
+            {
+                evens.Add(d.Key);
+            }
+            else{
+                kused--;
+                if(kused ==-1) return false;
+            }
+        }
+        Console.WriteLine(string.Join(",",evens));
+        Console.WriteLine(string.Join(",",odds));
+        Console.WriteLine($"kused {kused}");
+        
+        return true;
+        
+    }
+}
+
+// a 2
+// n 2
+// b 1
+// e 2
+// l 2
