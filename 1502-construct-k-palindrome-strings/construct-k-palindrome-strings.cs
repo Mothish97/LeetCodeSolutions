@@ -14,15 +14,11 @@ public class Solution {
             dct[c]++;
         }
         if(dct.Count()==1) return true;
-        var evens = new List<char>();
-        var odds = new List<char>();
+
         foreach(var d in dct)
         {
-            if(d.Value %2 ==0)
+            if(d.Value %2 !=0)
             {
-                evens.Add(d.Key);
-            }
-            else{
                 kused--;
                 if(kused ==-1) return false;
             }
