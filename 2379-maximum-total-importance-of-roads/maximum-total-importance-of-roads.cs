@@ -17,7 +17,7 @@ public class Solution {
         var cur = n;
         foreach(var d in sort)
         {
-            Console.WriteLine($"for {d.Key} with freq {d.Value} added {n}");
+            //Console.WriteLine($"for {d.Key} with freq {d.Value} added {n}");
             city.Add(d.Key,n--);
             if(n <0) n =0;
         }
