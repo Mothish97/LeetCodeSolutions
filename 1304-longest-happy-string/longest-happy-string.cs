@@ -10,7 +10,6 @@ public class Solution {
         {
             var cur = pq.Dequeue();
             if(cur.ct <=0) continue;
-            Console.WriteLine($"{cur.ct} {cur.val}");
             if(res.Length>1)
             {
                 if( cur.val != res[res.Length-1])
