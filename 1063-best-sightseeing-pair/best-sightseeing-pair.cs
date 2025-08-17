@@ -1,34 +1,15 @@
 public class Solution {
     public int MaxScoreSightseeingPair(int[] val)
     {
-        var dp =new int[val.Count()];
-        var max = val[0];
-        var ind =0;
-        dp[0] = val[0];
-        //Console.WriteLine(string.Join(",",dp));
-        for(int i=1; i<dp.Count();i++)
-        {
-            for(int j =i-1; j>ind;j--)
-            {
-                if(val[j] -j+i >=max )
-                {
-                    max =val[j];
-                    ind =j;
-                    break;
-                }
-            }
-            dp[i] = Math.Max(dp[i-1], val[i] + max + ind - i);
-            if(max <= val[i])
-            {
-                ind = i;
-                max = val[i];
-            }   
-            //Console.WriteLine(string.Join(",",dp));
+        int n = val.Length;
+        int best = val[0] + 0;   // best val[j] + j so far
+        int ans  = int.MinValue;
+
+        for (int i = 1; i < n; i++) {
+            ans = Math.Max(ans, best + val[i] - i);
+            best = Math.Max(best, val[i] + i);
         }
-       
-
-
-        return dp.Max();
+        return ans;
     }
 }
 //[ 8 1 5 2 6]
