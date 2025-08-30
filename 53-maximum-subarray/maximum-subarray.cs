@@ -7,15 +7,9 @@ public class Solution {
 
         for(int i = 1; i < nums.Count();i++)
         {
-            var pref = dp[i-1] + nums[i];
-            if(pref > nums[i])
-            {
-                dp[i] = pref;
-            }
-            else{
-                dp[i] = nums[i];
-            }
-            max = Math.Max(dp[i], max);
+            var cur = Math.Max(nums[i],dp[i-1]+nums[i]);
+            max = Math.Max(max,cur);
+            dp[i] = cur;
         }
 
         return max;
