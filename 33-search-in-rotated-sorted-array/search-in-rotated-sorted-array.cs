@@ -1,45 +1,51 @@
 public class Solution {
-    public int Search(int[] nums, int target)
+    public int Search(int[] nums, int target) 
     {
-        if(nums.Length == 0) 
+        var left = 0;
+        var right = nums.Count()-1;
+        
+
+        while(left<= right)
         {
-            return -1;
-        }
+            var mid = left + (right - left)/2;
 
-        var left =0;
-        var right = nums.Length-1;
-        while(left<=right)
-        {
-          
-            int mid =(right + left) /2;
-
-            if(nums[mid] == target) return mid;
-
-            if(nums[left]<= nums[mid])
-            {  
-                if (target < nums[mid] && target>= nums[left])
-                {
-                    right = mid-1;
-                }
-                else{
-                    left = mid+1;
-                }
-            }            
-            else 
+            if(target == nums[mid])
             {
-                if(target > nums[mid] && target<= nums[right])
+                return mid;
+            }
+            if(target == nums[left])
+            {
+                return left;
+            }
+                if(target == nums[right])
+            {
+                return right;
+            }
+            if(nums[left] < nums[mid])
+            {
+                if(target >= nums[left] && target <nums[mid])
+                {
+                    right = mid -1;
+                }
+                else 
                 {
                     left = mid+1;
                 }
-                else
+            }
+            else{
+                if(target <= nums[right] && target >nums[mid])
+                {
+                    left = mid +1;
+                }
+                else 
                 {
                     right = mid-1;
                 }
-                
             }
 
-        }
 
+        }
         return -1;
+        
     }
 }
