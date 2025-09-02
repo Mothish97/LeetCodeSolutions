@@ -21,7 +21,7 @@ public class Solution
         }
         foreach(var r in  replace)
         {
-            Console.WriteLine($"({r.row},{r.col})");
+            //Console.WriteLine($"({r.row},{r.col})");
             brd[r.row][r.col] = 'X';
         }
         
