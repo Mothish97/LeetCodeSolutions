@@ -12,10 +12,10 @@ public class Solution {
                 zerobud += profit[i];
             }
         }
-        // if(budget ==0)
-        // {
-        //     return zerobud;
-        // }
+        if(budget ==0)
+        {
+            return zerobud;
+        }
 
         for(int i =1; i<= present.Count(); i++)
         {
