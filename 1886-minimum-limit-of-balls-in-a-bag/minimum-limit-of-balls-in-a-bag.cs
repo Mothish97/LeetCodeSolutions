@@ -25,7 +25,7 @@ public class Solution {
         {
             var val = n;
             if(val <= mid) continue;
-            cur += (val-1) /mid;
+            cur += (int)Math.Ceiling((double)val / mid) - 1;
             //cur--;
             if(cur> mx) return false;
             
