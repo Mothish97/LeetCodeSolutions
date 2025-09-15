@@ -7,31 +7,35 @@
  *     public TreeNode(int x) { val = x; }
  * }
  */
-public class Solution {
-
-    public TreeNode dfs(TreeNode root, TreeNode p, TreeNode q)
+public class Solution 
+{
+    public TreeNode dfs(TreeNode node, TreeNode p, TreeNode q)
     {
-        if(root == null || root == p || root == q)
+        if(node == null || node == p || node == q)
         {
-            return root;
+            return node;
         }
-        var left = dfs(root.left,p,q);
-        var right = dfs(root.right,p,q);
+        var left = dfs(node.left,p,q);
+        var right = dfs(node.right,p,q);
         if(left != null && right != null)
         {
-            return root;
+            return node;
         }
-        if(left!= null)
+        else if(left != null)
         {
             return left;
         }
-        else{
+        else if ( right!= null)
+        {
             return right;
         }
+
+        return null;
     }
 
     public TreeNode LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) 
     {
-        return dfs(root,p,q);    
+        
+        return dfs(root,p,q);
     }
 }
