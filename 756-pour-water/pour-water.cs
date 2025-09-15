@@ -1,56 +1,47 @@
 public class Solution {
+    public int[] PourWater(int[] heights, int volume, int k) 
+    {
+        var v =0;
+        var cur =k; 
+        while(v< volume)
+        {
+            var idx =k;
+            var min = heights[k];
+            cur=k;
+            while(cur>=0 )
+            {
+                if(min > heights[cur])
+                {
+                    min =  heights[cur];
+                    idx = cur;
+                }
+                else if(heights[cur]> min)
+                {
+                    break;
+                }
+                cur--;
+            }
+            if(idx ==k)
+            {
+                cur =k;
+                while(cur<heights.Count())
+                {
+                    if(min > heights[cur])
+                    {
+                        min =  heights[cur];
+                        idx = cur;
+                    }
+                    else if(heights[cur]> min)
+                    {
+                        break;
+                    }
+                    cur++;
+                }
+            }
 
-    public void fillWater(int k , int [] heights)
-    {
-        var min= k;
-        for(int i = k; i>=0;i--)
-        {
-            if(heights[i]<heights[min])
-            {
-                min = i;
-            }
-            if(heights[i]> heights[k])
-            {
-                break;
-            }
-            if(heights[min]<heights[i])
-            {
-                break;
-            }
-        }
-        if(min!= k)
-        {
-            heights[min]++;
-            return;
-        }
-        for(int i =k; i< heights.Length;i++)
-        {
-            if(heights[i]<heights[min])
-            {
-                min = i;
-            }
-            if(heights[i]> heights[k])
-            {
-                break;
-            }
-            if(heights[min]<heights[i])
-            {
-                break;
-            }
-        }
-        heights[min]++;
-    }
-    public int[] PourWater(int[] heights, int volume, int k)
-    {
-        var cur  = 0;
-        //Console.WriteLine(string.Join(" ", heights));
-        while(cur<volume)
-        {
-            fillWater( k , heights);
-            cur++;
-            //Console.WriteLine(string.Join(" ", heights));
+            heights[idx] = heights[idx] +1;
+            v++;
         }
         return heights;
-        
     }
 }
