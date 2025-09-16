@@ -15,14 +15,14 @@ public class Solution {
         {
             for(int j = 1 ; j<=i && j<=max ;j++)
             { 
-                //Console.WriteLine("******************");
                 if(!dp[i-j] ) continue;
-                //Console.WriteLine($"i : {i}  j : {j}");
+
                 var sub = s.Substring(i-j, j);
                 Console.WriteLine(sub);
                 if(hsh.Contains(sub))
                 {
                     dp[i] = true;
+                    break;
                 }
             }
             //Console.WriteLine("-----------------------");
