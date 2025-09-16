@@ -1,28 +1,31 @@
 public class Solution {
-    public bool WordBreak(string s, IList<string> wordDict) {
-        var set = new HashSet<string>(wordDict);
-        int n = s.Length;
-        var dp = new bool[n+1];
-        dp[0] = true;
-        var max = int.MinValue;
-        foreach(var x in set)
+    public bool WordBreak(string s, IList<string> wordDict) 
+    {
+        var dp = new bool[s.Count()+1];
+        var hsh = new HashSet<string>();
+        var max = 0;
+        foreach(var x in wordDict)
         {
-            max = Math.Max(max,x.Count());
+            max = Math.Max(x.Count(),max);
+            hsh.Add(x);
         }
-
-        for(int i =1; i<=n ;i++)
+        dp[0] = true;
+        for(int i =1 ; i< dp.Count();i++)
         {
-            for(int j = 1; j<= max && j<=i;j++)
-            {
-                if(!dp[i-j])  continue;
-
-                if(set.Contains(s.Substring(i-j, j)))
+            for(int j = 1 ; j<=i && j<=max ;j++)
+            { 
+                //Console.WriteLine("******************");
+                if(!dp[i-j] ) continue;
+                Console.WriteLine($"i : {i}  j : {j}");
+                var sub = s.Substring(i-j, j);
+                Console.WriteLine(sub);
+                if(hsh.Contains(sub))
                 {
                     dp[i] = true;
-                    break;
                 }
             }
+            //Console.WriteLine("-----------------------");
         }
-        return dp[n];
+        return dp[dp.Count()-1];
     }
 }
