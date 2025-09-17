@@ -1,7 +1,6 @@
 public class Solution {
     public int[][] DivideArray(int[] nums, int k) {
         Array.Sort(nums);
-        Console.WriteLine(string.Join(",",nums));
         var res = new  List<List<int>>();
         var cur = new List<int>();
         var right =0;
@@ -17,8 +16,6 @@ public class Solution {
             if(cur.Count() == 3)
             {
                 res.Add(new List<int> (cur));
-                Console.WriteLine(string.Join(",",cur));
-                Console.WriteLine(right);
                 cur.Clear();
                 continue;
             }
@@ -33,10 +30,6 @@ public class Solution {
             }
             
 
-        }
-        if(cur[2] - cur[0]  > k)
-        {
-            return [];
         }
         res.Add(new List<int> (cur));
 
