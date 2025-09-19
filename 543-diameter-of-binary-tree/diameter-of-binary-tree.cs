@@ -27,8 +27,6 @@ public class Solution {
         var left = dfs(node.left);
         var right = dfs(node.right);
         res = Math.Max(res ,1 +left+right );
-        Console.WriteLine( 1 +left+right);
-
         return 1 + Math.Max(left,right);
         
         
