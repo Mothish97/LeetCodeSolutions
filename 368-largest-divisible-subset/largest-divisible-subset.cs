@@ -28,10 +28,6 @@ public class Solution {
         }
 
         var res = new List<int>();
-        Console.WriteLine(string.Join(",",dp));
-        Console.WriteLine(string.Join(",",prev));
-        
-
         while(bestind >= 0)
         {
             res.Add(nums[bestind]);
