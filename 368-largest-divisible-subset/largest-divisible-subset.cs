@@ -1,7 +1,7 @@
 public class Solution {
     public IList<int> LargestDivisibleSubset(int[] nums) {
         Array.Sort(nums);
-        if(nums.Count()==1) return nums.ToList();
+        // if(nums.Count()==1) return nums.ToList();
         var dp = new int[nums.Count()];
         var prev = new int[nums.Count()];
         Array.Fill(prev, -1);
@@ -37,11 +37,7 @@ public class Solution {
             res.Add(nums[bestind]);
             bestind = prev[bestind];
         }
-        // if(res.Count() == 0)
-        // {
-        //     res.Add(nums[0]);
-        //     return res;
-        // }
+
         return res;     
     }
 }
