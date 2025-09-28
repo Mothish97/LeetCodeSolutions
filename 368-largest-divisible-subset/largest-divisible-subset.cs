@@ -32,22 +32,16 @@ public class Solution {
         Console.WriteLine(string.Join(",",prev));
         
 
-        while(bestind > 0)
+        while(bestind >= 0)
         {
-            Console.WriteLine(bestind);
             res.Add(nums[bestind]);
             bestind = prev[bestind];
-            if(bestind ==0)
-            {
-                res.Add(nums[0]);
-                break;
-            }
         }
-        if(res.Count() == 0)
-        {
-            res.Add(nums[0]);
-            return res;
-        }
+        // if(res.Count() == 0)
+        // {
+        //     res.Add(nums[0]);
+        //     return res;
+        // }
         return res;     
     }
 }
