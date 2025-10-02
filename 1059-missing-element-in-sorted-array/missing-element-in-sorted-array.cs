@@ -22,7 +22,7 @@ public class Solution {
             mid = left + (right-left)/2;
             miss  = getmiss( mid);
 
-            Console.WriteLine($"left {left}  right {right} mid{mid}  miss {miss}");
+            // Console.WriteLine($"left {left}  right {right} mid{mid}  miss {miss}");
             // Console.WriteLine($"num[left] {nums[left]}  mid {nums[mid]} mid{mid}  miss {miss}");
             if(miss >k)
             {
