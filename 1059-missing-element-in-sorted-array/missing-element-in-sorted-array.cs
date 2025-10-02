@@ -35,10 +35,10 @@ public class Solution {
                 right = mid;
             }
         }
-        Console.WriteLine($"left {left}  right {right} mid{mid}  miss {miss}");
+        // Console.WriteLine($"left {left}  right {right} mid{mid}  miss {miss}");
 
         missed = nums[right] - nums[left -1] -(right -left+1);
-        Console.WriteLine($"num[left] {nums[left-1]}  right {nums[right]} missed {missed} ");
+        // Console.WriteLine($"num[left] {nums[left-1]}  right {nums[right]} missed {missed} ");
 
         missed  = getmiss( left -1);
         return nums[left -1] +k - missed  ;
