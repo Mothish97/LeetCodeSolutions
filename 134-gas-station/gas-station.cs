@@ -4,13 +4,13 @@ public class Solution {
         if(cost.Sum()> gas.Sum()) return -1;
         var prGas =0;
         var prCo =0;
-        var spent = new List<int>();
+        //var spent = new List<int>();
         var res = 0;
         for(int i = 0; i< gas.Count();i++)
         {
             
             prGas = gas[i] - cost[i];
-            spent.Add(prGas);
+            //spent.Add(prGas);
             prCo += prGas;
             
             if(prCo<0)
@@ -19,6 +19,7 @@ public class Solution {
                 res = i+1;
             }
         }
+        //Console.WriteLine(string.Join(",",spent));
 
 
         return res;
